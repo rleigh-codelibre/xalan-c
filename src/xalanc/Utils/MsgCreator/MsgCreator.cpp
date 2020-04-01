@@ -29,6 +29,7 @@
 #include <xercesc/util/TransService.hpp>
 
 #include <cassert>
+#include <cstring>
 #if defined(_DEBUG) && defined(_MSC_VER)
 #include <crtdbg.h>
 #endif
@@ -431,7 +432,7 @@ int main(int argC, char* argV[])
                 {
                     cerr << "\nAn error occurred\n  Error: ";
 
-                    if (e.m_message != 0)
+                    if (std::strlen(e.m_message) != 0)
                     {
                         cerr << e.m_message <<  endl;
                     }
@@ -446,7 +447,7 @@ int main(int argC, char* argV[])
                 {
                     cerr << "\nAn error occurred\n  Error: ";
 
-                    if (e.m_message != 0)
+                    if (std::strlen(e.m_message) != 0)
                     {
                         cerr << e.m_message << endl;
                     }
