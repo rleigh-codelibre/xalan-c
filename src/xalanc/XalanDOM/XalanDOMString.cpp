@@ -1171,8 +1171,6 @@ doTranscodeFromLocalCodePage(
             XalanDOMCharVectorType&     theTargetVector,
             bool                        terminate)
 {
-    typedef XalanDOMString::size_type   size_type;
-
     // Short circuit if it's a null pointer, or of length 0.
     if (!theSourceString || (!theSourceString[0]))
     {
