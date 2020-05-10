@@ -19,6 +19,9 @@
 
 if(msgloader STREQUAL "inmemory")
 
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/XalanMsgLib.rc.in
+               ${CMAKE_CURRENT_BINARY_DIR}/XalanMsgLib.rc)
+
   set(msglib_sources
     XalanMsgLib.cpp)
 

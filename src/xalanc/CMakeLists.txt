@@ -20,6 +20,9 @@
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/Include/XalanVersion.hpp.in
                ${CMAKE_CURRENT_BINARY_DIR}/Include/XalanVersion.hpp)
 
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/XalanC.rc.in
+               ${CMAKE_CURRENT_BINARY_DIR}/XalanC.rc)
+
 set(xalandom_sources
   XalanDOM/XalanAttr.cpp
   XalanDOM/XalanCDataSection.cpp

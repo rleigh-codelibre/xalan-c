@@ -27,8 +27,8 @@ LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
 //
 
 VS_VERSION_INFO VERSIONINFO
- FILEVERSION 1,12,0,0
- PRODUCTVERSION 1,12,0,0
+ FILEVERSION @xalan-c_VERSION_MAJOR@,@xalan-c_VERSION_MINOR@,@xalan-c_VERSION_PATCH@,@xalan-c_VERSION_TWEAK@
+ PRODUCTVERSION @xalan-c_VERSION_MAJOR@,@xalan-c_VERSION_MINOR@,@xalan-c_VERSION_PATCH@,@xalan-c_VERSION_TWEAK@
  FILEFLAGSMASK 0x17L
 #ifdef _DEBUG
  FILEFLAGS 0x1L
@@ -45,13 +45,13 @@ BEGIN
         BEGIN
             VALUE "Comments", "Dynamic linked library with messages for Xalan-C++"
             VALUE "CompanyName", "Apache Software Foundation"
-            VALUE "FileDescription", "Dynamic Link Library for Xalan-C++ Messages Version 1.12.0"
-            VALUE "FileVersion", "1, 12, 0, 0"
-            VALUE "InternalName", "XalanMessages_1_12.dll"
-            VALUE "LegalCopyright", "Copyright © Apache Software Foundation 1999-2020. Subject to licensing terms"
-            VALUE "OriginalFilename", "XalanMessages_1_12.dll"
-            VALUE "ProductName", "Xalan-C++ Version 1.12.0"
-            VALUE "ProductVersion", "1, 12, 0, 0"
+            VALUE "FileDescription", "Dynamic Link Library for Xalan-C++ Messages Version @xalan-c_VERSION_MAJOR@.@xalan-c_VERSION_MINOR@.@xalan-c_VERSION_PATCH@"
+            VALUE "FileVersion", "@xalan-c_VERSION_MAJOR@, @xalan-c_VERSION_MINOR@, @xalan-c_VERSION_PATCH@, @xalan-c_VERSION_TWEAK@"
+            VALUE "InternalName", "XalanMessages_@XALAN_MS_LIB_MAJOR_VER@_@XALAN_MS_LIB_MINOR_VER@.dll"
+            VALUE "LegalCopyright", "Copyright ï¿½ Apache Software Foundation 1999-2020. Subject to licensing terms"
+            VALUE "OriginalFilename", "XalanMessages_@XALAN_MS_LIB_MAJOR_VER@_@XALAN_MS_LIB_MINOR_VER@.dll"
+            VALUE "ProductName", "Xalan-C++ Version @xalan-c_VERSION_MAJOR@.@xalan-c_VERSION_MINOR@.@xalan-c_VERSION_PATCH@"
+            VALUE "ProductVersion", "@xalan-c_VERSION_MAJOR@, @xalan-c_VERSION_MINOR@, @xalan-c_VERSION_PATCH@, @xalan-c_VERSION_TWEAK@"
         END
     END
     BLOCK "VarFileInfo"
