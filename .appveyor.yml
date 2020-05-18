@@ -34,15 +34,15 @@ environment:
       shared: OFF
       msgloader:
       transcoder: default
-    - compiler: vc14
+    - compiler: vc15
       configuration: Release
-      generator: Visual Studio 14 2015 Win64
+      generator: Visual Studio 14 2017 Win64
       shared: ON
       msgloader:
       transcoder:
-    - compiler: vc14
+    - compiler: vc15
       configuration: Debug
-      generator: Visual Studio 14 2015 Win64
+      generator: Visual Studio 14 2017 Win64
       shared: OFF
       msgloader: inmemory
       transcoder: icu
@@ -54,7 +54,7 @@ cache:
   - 'c:\tools\vcpkg\installed -> scripts/ci-appveyor-setup'
 
 # Operating system (build VM template)
-os: 'Visual Studio 2015'
+os: 'Visual Studio 2017'
 
 # clone directory
 clone_folder: 'c:\projects\xalan-c'
@@ -77,15 +77,15 @@ init:
   - set AV_DO_XERCES_BUILD=true
   - if [%msgloader%] == [icu] set AV_DO_ICU_BUILD=true
   - if [%transcoder%] == [icu] set AV_DO_ICU_BUILD=true
-  - if [%compiler%] == [vc14] set AV_DO_XERCES_BUILD=false
-  - if [%compiler%] == [vc14] set AV_DO_ICU_BUILD=false
+  - if [%compiler%] == [vc15] set AV_DO_XERCES_BUILD=false
+  - if [%compiler%] == [vc15] set AV_DO_ICU_BUILD=false
   - 'if EXIST "%AV_PROJECTS%\icu" AV_DO_ICU_BUILD=false'
   - 'if EXIST "%AV_PROJECTS%\xerces-c" AV_DO_XERCES_BUILD=false'
   - 'set "PATH=C:\Program Files (x86)\cmake\bin;%AV_XALAN_TOOLS%;%PATH%"'
   - 'if %compiler%==cygwin set "PATH=C:\Cygwin64\bin;%PATH%"'
   - 'if %compiler%==mingw set "PATH=C:\mingw-w64\x86_64-6.3.0-posix-seh-rt_v5-rev1\mingw64\bin;%PATH%"'
   - set "AV_CMAKE_ARGS=-DBUILD_SHARED_LIBS:BOOL=%shared%"
-  - 'if %compiler%==vc14 set "AV_CMAKE_ARGS=%AV_CMAKE_ARGS% -DCMAKE_TOOLCHAIN_FILE=C:\tools\vcpkg\scripts\buildsystems\vcpkg.cmake"'
+  - 'if %compiler%==vc15 set "AV_CMAKE_ARGS=%AV_CMAKE_ARGS% -DCMAKE_TOOLCHAIN_FILE=C:\tools\vcpkg\scripts\buildsystems\vcpkg.cmake"'
   - if NOT [%msgloader%] == [] set "AV_CMAKE_ARGS=%AV_CMAKE_ARGS% -Dmessage-loader=%msgloader%"
   - if NOT [%transcoder%] == [] set "AV_CMAKE_ARGS=%AV_CMAKE_ARGS% -Dtranscoder=%transcoder%"
   - set "AV_XERCES_CMAKE_SOURCE=%AV_XERCES_SOURCE%"

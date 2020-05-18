@@ -28,11 +28,7 @@ download_file()
 )
 
 xerces_git_uri="https://github.com/apache/xerces-c.git"
-xerces_git_branch="trunk"
-
-ninja_binary="ninja-win.zip"
-ninja_url="https://github.com/ninja-build/ninja/releases/download/v1.9.0/${ninja_binary}"
-ninja_hash="1c050e602ec63d4dcf44d9ab3d2d02ac731b4b2977bc0b420a21e85604487f58ec8d3045941d4153ef06ab00c175ca7cf9d57b8e20a757528290e135639962ac"
+xerces_git_branch="v3.2.3"
 
 if [ "$compiler" = "vc14" ]; then
 (
@@ -50,14 +46,4 @@ else
     echo "cygpath AV_XERCES_SOURCE=$(cygpath -u "${AV_XERCES_SOURCE}")"
     git clone -b "$xerces_git_branch" "$xerces_git_uri" "$(cygpath -u "${AV_XERCES_SOURCE}")"
 )
-fi
-
-if [ "$generator" = "Ninja" ]; then
-    (
-        cd "$AV_XALAN_CYG_DOWNLOAD"
-        download_file "$ninja_url" "$ninja_binary" "$ninja_hash"
-        cd "$AV_XALAN_CYG_TOOLS"
-        rm -f ninja
-        7z e "${AV_XALAN_DOWNLOAD}\\$ninja_binary"
-    )
 fi
