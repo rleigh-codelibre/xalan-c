@@ -84,9 +84,11 @@ init:
   - 'if EXIST "%AV_PROJECTS%\xerces-c" AV_DO_XERCES_BUILD=false'
   - 'set "PATH=C:\Program Files (x86)\cmake\bin;%AV_XALAN_TOOLS%;%PATH%"'
   - 'if %compiler%==cygwin set "PATH=C:\Cygwin64\bin;%PATH%"'
-  - 'if %compiler%==mingw set "PATH=C:\mingw-w64\x86_64-6.3.0-posix-seh-rt_v5-rev1\mingw64\bin;%PATH%"'
+  - 'if %compiler%==mingw set "PATH=C:\mingw-w64\x86_64-8.1.0-posix-seh-rt_v6-rev0\mingw64\bin;%PATH%"'
+  - 'if %compiler%==mingw set CC=C:\mingw-w64\x86_64-8.1.0-posix-seh-rt_v6-rev0\mingw64\bin\gcc
+  - 'if %compiler%==mingw set CXX=C:\mingw-w64\x86_64-8.1.0-posix-seh-rt_v6-rev0\mingw64\bin\g++
   - set "AV_CMAKE_ARGS=-DBUILD_SHARED_LIBS:BOOL=%shared%"
-  - 'if %compiler%==vc15 set "AV_CMAKE_ARGS=%AV_CMAKE_ARGS% -DCMAKE_TOOLCHAIN_FILE=C:\tools\vcpkg\scripts\buildsystems\vcpkg.cmake"'
+  - 'if %compiler%==vc15 set "AV_CMAKE_ARGS=%AV_CMAKE_ARGS% -DCMAKE_TOOLCHAIN_FILE:PATH=C:\tools\vcpkg\scripts\buildsystems\vcpkg.cmake"'
   - if NOT [%msgloader%] == [] set "AV_CMAKE_ARGS=%AV_CMAKE_ARGS% -Dmessage-loader=%msgloader%"
   - if NOT [%transcoder%] == [] set "AV_CMAKE_ARGS=%AV_CMAKE_ARGS% -Dtranscoder=%transcoder%"
   - set "AV_XERCES_CMAKE_SOURCE=%AV_XERCES_SOURCE%"
@@ -113,14 +115,13 @@ before_build:
   - if [%AV_DO_XERCES_BUILD%] == [true] cd %AV_XERCES_BUILD%
   - if [%AV_DO_XERCES_BUILD%] == [true] cmake --build . --config %configuration%
   - if [%AV_DO_XERCES_BUILD%] == [true] cmake --build . --config %configuration% --target install
-  - if [%AV_DO_XERCES_BUILD%] == [true] ctest -C %configuration%
   - 'set "PATH=%AV_XERCES_CMAKE_INSTALL%\bin;%PATH%"'
-  - 'set "CMAKE_PREFIX_PATH=%AV_XERCES_INSTALL%;%AV_PROJECTS%\icu"'
+  - 'set "PREFIX_PATH=%AV_XERCES_INSTALL%;%AV_PROJECTS%\icu"'
   - 'echo CPP: %CMAKE_PREFIX_PATH%'
   - mkdir %AV_XALAN_BUILD%
   - cd %AV_XALAN_BUILD%
-  - echo Running cmake -G "%generator%" -DCMAKE_INSTALL_PREFIX=%AV_XALAN_CMAKE_INSTALL% -DCMAKE_BUILD_TYPE=%configuration% %AV_XALAN_CMAKE_SOURCE%
-  - cmake -G "%generator%" "-DCMAKE_PREFIX_PATH:PATH=%CMAKE_PREFIX_PATH%" "-DCMAKE_INSTALL_PREFIX:PATH=%AV_XALAN_CMAKE_INSTALL%" -DCMAKE_BUILD_TYPE=%configuration% %AV_CMAKE_ARGS% "%AV_XALAN_CMAKE_SOURCE%"
+  - echo Running cmake -G "%generator%" "-DCMAKE_PREFIX_PATH:PATH=%PREFIX_PATH%" "-DCMAKE_INSTALL_PREFIX:PATH=%AV_XALAN_CMAKE_INSTALL%" -DCMAKE_BUILD_TYPE=%configuration% "%AV_XALAN_CMAKE_SOURCE%"
+  - cmake -G "%generator%" "-DCMAKE_PREFIX_PATH:PATH=%PREFIX_PATH%" "-DCMAKE_INSTALL_PREFIX:PATH=%AV_XALAN_CMAKE_INSTALL%" -DCMAKE_BUILD_TYPE=%configuration% %AV_CMAKE_ARGS% "%AV_XALAN_CMAKE_SOURCE%"
 
 build_script:
   - cd %AV_XALAN_BUILD%
