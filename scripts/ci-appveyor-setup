@@ -30,10 +30,10 @@ download_file()
 xerces_git_uri="https://github.com/apache/xerces-c.git"
 xerces_git_branch="v3.2.3"
 
-if [ "$compiler" = "vc14" ]; then
+if [ "$compiler" = "vc15" ]; then
 (
     cd "$(cygpath -u "c:\\tools\\vcpkg")"
-    vcpkg install xerces-c:x64-windows
+    ./vcpkg install xerces-c:x64-windows
 
     if [ "$transcoder" = "icu" ]; then
         vcpkg install icu:x64-windows
