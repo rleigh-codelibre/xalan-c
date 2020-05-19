@@ -105,6 +105,7 @@ before_build:
   - if [%AV_DO_XERCES_BUILD%] == [true] cmake --build . --config %configuration% --target install
   - 'set "PATH=%AV_XERCES_CMAKE_INSTALL%\bin;%PATH%"'
   - 'set "PREFIX_PATH=%AV_XERCES_INSTALL%;%AV_PROJECTS%\icu"'
+  - 'if %compiler%==cygwin set "PREFIX_PATH=/cygdrive/c/projects/xerces-c:/cygdrive/c/projects/icu"'
   - 'echo CPP: %CMAKE_PREFIX_PATH%'
   - mkdir %AV_XALAN_BUILD%
   - cd %AV_XALAN_BUILD%
