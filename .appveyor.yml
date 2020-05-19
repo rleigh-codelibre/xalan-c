@@ -22,18 +22,6 @@ environment:
       shared: OFF
       msgloader:
       transcoder:
-    - compiler: mingw
-      configuration: Release
-      generator: Ninja
-      shared: ON
-      msgloader: inmemory
-      transcoder:
-    - compiler: mingw
-      configuration: Debug
-      generator: Ninja
-      shared: OFF
-      msgloader:
-      transcoder: default
     - compiler: vc15
       configuration: Release
       generator: Visual Studio 15 2017 Win64
