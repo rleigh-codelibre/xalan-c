@@ -10,18 +10,6 @@ environment:
   AV_XALAN_INSTALL: 'c:/projects/libs'
 
   matrix:
-    - compiler: cygwin
-      configuration: Release
-      generator: Unix Makefiles
-      shared: ON
-      msgloader: inmemory
-      transcoder: default
-    - compiler: cygwin
-      configuration: Debug
-      generator: Unix Makefiles
-      shared: OFF
-      msgloader:
-      transcoder:
     - compiler: vc15
       configuration: Release
       generator: Visual Studio 15 2017 Win64
