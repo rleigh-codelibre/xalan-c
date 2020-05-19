@@ -109,18 +109,18 @@ before_build:
   - 'if [%AV_DO_ICU_BUILD%] == [true] set "PATH=%AV_PROJECTS%\icu\bin;%AV_PROJECTS%\icu\bin64;%PATH%"'
   - mkdir %AV_XERCES_BUILD%
   - cd %AV_XERCES_BUILD%
-  - if [%AV_DO_XERCES_BUILD%] == [true] cmake -G "%generator%" -DCMAKE_INSTALL_PREFIX:PATH=%AV_XERCES_CMAKE_INSTALL% -DCMAKE_BUILD_TYPE=%configuration% %AV_XERCES_CMAKE_SOURCE%
+  - if [%AV_DO_XERCES_BUILD%] == [true] cmake -G "%generator%" -DCMAKE_INSTALL_PREFIX:PATH=%AV_XERCES_CMAKE_INSTALL% -DCMAKE_BUILD_TYPE=%configuration% "%AV_XERCES_CMAKE_SOURCE%"
   - if [%AV_DO_XERCES_BUILD%] == [true] cd %AV_XERCES_BUILD%
   - if [%AV_DO_XERCES_BUILD%] == [true] cmake --build . --config %configuration%
   - if [%AV_DO_XERCES_BUILD%] == [true] cmake --build . --config %configuration% --target install
-  - if [%AV_DO_XERCES_BUILD%] == [true] ctest -V -C %configuration%
+  - if [%AV_DO_XERCES_BUILD%] == [true] ctest -C %configuration%
   - 'set "PATH=%AV_XERCES_CMAKE_INSTALL%\bin;%PATH%"'
   - 'set "CMAKE_PREFIX_PATH=%AV_XERCES_INSTALL%;%AV_PROJECTS%\icu"'
   - 'echo CPP: %CMAKE_PREFIX_PATH%'
   - mkdir %AV_XALAN_BUILD%
   - cd %AV_XALAN_BUILD%
   - echo Running cmake -G "%generator%" -DCMAKE_INSTALL_PREFIX=%AV_XALAN_CMAKE_INSTALL% -DCMAKE_BUILD_TYPE=%configuration% %AV_XALAN_CMAKE_SOURCE%
-  - cmake -G "%generator%" -DCMAKE_INSTALL_PREFIX=%AV_XALAN_CMAKE_INSTALL% -DCMAKE_BUILD_TYPE=%configuration% %AV_CMAKE_ARGS% %AV_XALAN_CMAKE_SOURCE%
+  - cmake -G "%generator%" "-DCMAKE_PREFIX_PATH:PATH=%CMAKE_PREFIX_PATH%" "-DCMAKE_INSTALL_PREFIX:PATH=%AV_XALAN_CMAKE_INSTALL%" -DCMAKE_BUILD_TYPE=%configuration% %AV_CMAKE_ARGS% "%AV_XALAN_CMAKE_SOURCE%"
 
 build_script:
   - cd %AV_XALAN_BUILD%
