@@ -36,13 +36,13 @@ environment:
       transcoder: default
     - compiler: vc15
       configuration: Release
-      generator: Visual Studio 14 2017 Win64
+      generator: Visual Studio 15 2017 Win64
       shared: ON
       msgloader:
       transcoder:
     - compiler: vc15
       configuration: Debug
-      generator: Visual Studio 14 2017 Win64
+      generator: Visual Studio 15 2017 Win64
       shared: OFF
       msgloader: inmemory
       transcoder: icu
@@ -63,6 +63,7 @@ clone_depth: 5
 platform: x64
 
 init:
+  - set
   - git config --global core.autocrlf input
   - 'FOR /F "tokens=* USEBACKQ" %%F IN (`C:\cygwin64\bin\cygpath -u %AV_XERCES_SOURCE%`) DO SET AV_XERCES_CYG_SOURCE=%%F'
   - 'FOR /F "tokens=* USEBACKQ" %%F IN (`C:\cygwin64\bin\cygpath -u %AV_XERCES_INSTALL%`) DO SET AV_XERCES_CYG_INSTALL=%%F'
