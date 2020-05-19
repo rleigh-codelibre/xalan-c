@@ -85,8 +85,8 @@ init:
   - 'set "PATH=C:\Program Files (x86)\cmake\bin;%AV_XALAN_TOOLS%;%PATH%"'
   - 'if %compiler%==cygwin set "PATH=C:\Cygwin64\bin;%PATH%"'
   - 'if %compiler%==mingw set "PATH=C:\mingw-w64\x86_64-8.1.0-posix-seh-rt_v6-rev0\mingw64\bin;%PATH%"'
-  - 'if %compiler%==mingw set CC=C:\mingw-w64\x86_64-8.1.0-posix-seh-rt_v6-rev0\mingw64\bin\gcc
-  - 'if %compiler%==mingw set CXX=C:\mingw-w64\x86_64-8.1.0-posix-seh-rt_v6-rev0\mingw64\bin\g++
+  - 'if %compiler%==mingw set CC=C:\mingw-w64\x86_64-8.1.0-posix-seh-rt_v6-rev0\mingw64\bin\gcc'
+  - 'if %compiler%==mingw set CXX=C:\mingw-w64\x86_64-8.1.0-posix-seh-rt_v6-rev0\mingw64\bin\g++'
   - set "AV_CMAKE_ARGS=-DBUILD_SHARED_LIBS:BOOL=%shared%"
   - 'if %compiler%==vc15 set "AV_CMAKE_ARGS=%AV_CMAKE_ARGS% -DCMAKE_TOOLCHAIN_FILE:PATH=C:\tools\vcpkg\scripts\buildsystems\vcpkg.cmake"'
   - if NOT [%msgloader%] == [] set "AV_CMAKE_ARGS=%AV_CMAKE_ARGS% -Dmessage-loader=%msgloader%"
