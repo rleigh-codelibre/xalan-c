@@ -33,6 +33,8 @@ xerces_git_branch="v3.2.3"
 if [ "$compiler" = "vc15" ]; then
 (
     cd "$(cygpath -u "c:\\tools\\vcpkg")"
+    git pull
+    ./bootstrap-vcpkg.sh
     ./vcpkg install xerces-c:x64-windows
 
     if [ "$transcoder" = "icu" ]; then
