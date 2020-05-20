@@ -32,14 +32,16 @@ xerces_git_branch="v3.2.3"
 
 if [ "$compiler" = "vc15" ]; then
 (
+  if [ ! -f /cygdrive/c/tools/vcpkg/installed/x64-windows/bin/xerces-c_3_2.dll ]; then
     cd "$(cygpath -u "c:\\tools\\vcpkg")"
     git pull
     ./bootstrap-vcpkg.bat
     ./vcpkg install xerces-c:x64-windows
 
     if [ "$transcoder" = "icu" ]; then
-        vcpkg install icu:x64-windows
+      vcpkg install icu:x64-windows
     fi
+  fi
 )
 else
 (
